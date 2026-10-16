@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Signature motif: a woven strip-cloth border, built from pure
+   CSS gradients (no images) so it themes cleanly and stays crisp
+   at any resolution. Inspired by aṣọ òkè strip weaving — used
+   sparingly, only at section boundaries and as a card accent.
+   ------------------------------------------------------------ */
+.woven-border {
+  position: relative;
+}
+.woven-border::before {
+  content: "";
+  display: block;
+  height: 6px;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    theme("colors.gold.DEFAULT") 0,
+    theme("colors.gold.DEFAULT") 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  opacity: 0.55;
+}
+
+/* ------------------------------------------------------------
+   Signature element: beaded divider (ìlẹ̀kẹ̀-inspired).
+   A row of alternating small circles marking a section transition.
+   Use once per boundary — not as generic decoration.
+   ------------------------------------------------------------ */
+.beaded-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 2.5rem 0;
+}
+.beaded-divider span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+}
+.beaded-divider span:nth-child(3n + 1) {
+  background: theme("colors.gold.DEFAULT");
+}
+.beaded-divider span:nth-child(3n + 2) {
+  background: theme("colors.aro.red");
+}
+.beaded-divider span:nth-child(3n) {
+  background: theme("colors.aro.green");
+}
+
+/* Visible keyboard focus everywhere, styled to match brand rather
+   than the browser default blue outline. */
+:focus-visible {
+  outline: 2px solid theme("colors.gold.DEFAULT");
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Utility: balance long headlines */
+.text-balance {
+  text-wrap: balance;
+}

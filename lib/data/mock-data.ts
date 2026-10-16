@@ -1,0 +1,182 @@
+import type { Business, Event, Story } from "@/lib/types/database";
+
+// True until real Supabase env vars are set. Every function in lib/data/*
+// checks this first and returns mock content instead of querying a
+// database that doesn't exist yet — so the site is fully browsable
+// before you've created a Supabase project.
+export const isSupabaseConfigured =
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
+  !process.env.NEXT_PUBLIC_SUPABASE_URL.includes("your-project-ref");
+
+const now = new Date().toISOString();
+const today = new Date();
+const inDays = (n: number) => new Date(today.getTime() + n * 86400000).toISOString().split("T")[0];
+
+export const MOCK_BUSINESSES: Business[] = [
+  {
+    id: "mock-1",
+    owner_id: null,
+    name: "Ìjẹ̀bú Garden Suites",
+    slug: "ijebu-garden-suites",
+    category: "hospitality",
+    description:
+      "A quiet boutique stay in Ijebu-Ode with a garden courtyard, ten rooms, and breakfast rooted in local cuisine.",
+    address: "Ijebu-Ode, Ogun State",
+    phone: "+234 800 000 0001",
+    whatsapp: null,
+    email: null,
+    social_links: {},
+    hours: {},
+    cover_image_url: null,
+    gallery: [],
+    verified: true,
+    status: "published",
+    admin_note: null,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "mock-2",
+    owner_id: null,
+    name: "Mama Rachael's Kitchen",
+    slug: "mama-rachaels-kitchen",
+    category: "food-and-dining",
+    description:
+      "Traditional Ijebu garri, ẹ̀wà àgòyìn and soups made fresh daily, a favorite for three generations of locals.",
+    address: "Odo-Ori Market, Ijebu-Ode",
+    phone: null,
+    whatsapp: "+234 800 000 0002",
+    email: null,
+    social_links: {},
+    hours: {},
+    cover_image_url: null,
+    gallery: [],
+    verified: true,
+    status: "published",
+    admin_note: null,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "mock-3",
+    owner_id: null,
+    name: "Alárẹ Studio",
+    slug: "alare-studio",
+    category: "photography-and-creative",
+    description: "Photography and event coverage specializing in Ijebu traditional ceremonies and portraiture.",
+    address: "Ijebu-Ode, Ogun State",
+    phone: null,
+    whatsapp: null,
+    email: null,
+    social_links: {},
+    hours: {},
+    cover_image_url: null,
+    gallery: [],
+    verified: false,
+    status: "published",
+    admin_note: null,
+    created_at: now,
+    updated_at: now,
+  },
+];
+
+export const MOCK_EVENTS: Event[] = [
+  {
+    id: "mock-e1",
+    submitted_by: null,
+    title: "Ojude Oba Festival",
+    slug: "ojude-oba-festival",
+    event_date: inDays(30),
+    event_time: "9:00 AM",
+    location: "Ijebu-Ode",
+    organizer: "Ijebuland Traditional Council",
+    description:
+      "One of the most vibrant cultural festivals in Yorubaland, bringing together age-grade groups, horse riders, and the Ijebu community from around the world.",
+    ticket_url: null,
+    cover_image_url: null,
+    status: "published",
+    admin_note: null,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "mock-e2",
+    submitted_by: null,
+    title: "Ijebu Business Mixer",
+    slug: "ijebu-business-mixer",
+    event_date: inDays(10),
+    event_time: "5:00 PM",
+    location: "Ijebu-Ode",
+    organizer: "Ilé Ìjẹ̀bú",
+    description: "An evening connecting local business owners for collaboration and community.",
+    ticket_url: null,
+    cover_image_url: null,
+    status: "published",
+    admin_note: null,
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "mock-e3",
+    submitted_by: null,
+    title: "Heritage Walking Tour",
+    slug: "heritage-walking-tour",
+    event_date: inDays(18),
+    event_time: "8:00 AM",
+    location: "Ijebu-Ode Old Town",
+    organizer: "Ilé Ìjẹ̀bú",
+    description: "A guided walk through Ijebu-Ode's historic landmarks and royal sites.",
+    ticket_url: null,
+    cover_image_url: null,
+    status: "published",
+    admin_note: null,
+    created_at: now,
+    updated_at: now,
+  },
+];
+
+export const MOCK_STORIES: Story[] = [
+  {
+    id: "mock-s1",
+    author_id: null,
+    title: "The Weavers of Aṣọ Òkè: Keeping a Craft Alive",
+    slug: "weavers-of-aso-oke",
+    category: "heritage",
+    cover_image_url: null,
+    excerpt: "Inside the looms of Ijebu-Ode, where strip-weaving traditions are passed hand to hand.",
+    body: "For generations, the weavers of Ijebuland have kept the tradition of aṣọ òkè alive, thread by thread.\n\nEach pattern carries meaning — colors chosen for celebration, for mourning, for chieftaincy. Today a small but committed group of artisans continues the craft, training the next generation even as demand shifts toward machine-made cloth.\n\nThis is their story.",
+    published_at: now,
+    status: "published",
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "mock-s2",
+    author_id: null,
+    title: "Meet the Woman Behind Ijebu-Ode's Busiest Market Stall",
+    slug: "busiest-market-stall",
+    category: "people",
+    cover_image_url: null,
+    excerpt: "Forty years, one stall, and a reputation that spans the whole state.",
+    body: "Forty years, one stall, and a reputation that spans the whole state.\n\nHer stall opens before sunrise and closes long after dark. This is a look at the life behind Ijebu-Ode's most iconic market presence.",
+    published_at: now,
+    status: "published",
+    created_at: now,
+    updated_at: now,
+  },
+  {
+    id: "mock-s3",
+    author_id: null,
+    title: "Culture Worth Passing On",
+    slug: "culture-worth-passing-on",
+    category: "community",
+    cover_image_url: null,
+    excerpt: null,
+    body: null,
+    published_at: now,
+    status: "published",
+    created_at: now,
+    updated_at: now,
+  },
+];
