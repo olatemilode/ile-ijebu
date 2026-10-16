@@ -44,7 +44,6 @@ export default function RootLayout({
         className={`${fraunces.variable} ${inter.variable} font-body bg-ivory text-cocoa dark:bg-ink dark:text-ivory antialiased transition-colors duration-300`}
       >
         <ThemeProvider>
-          <MockDataBanner />
           <SiteHeader />
           {children}
           <SiteFooter />
