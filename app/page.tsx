@@ -1,9 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { ExploreGrid } from "@/components/sections/explore-grid";
+import { EventCountdown } from "@/components/sections/event-countdown";
 import { PurposeSplit } from "@/components/sections/purpose-split";
-import { FeaturedBusinesses } from "@/components/sections/featured-businesses";
-import { UpcomingEvents } from "@/components/sections/upcoming-events";
-import { FeaturedStories } from "@/components/sections/featured-stories";
 import { PartnerCta } from "@/components/sections/partner-cta";
 import { BeadedDivider } from "@/components/ui/beaded-divider";
 
@@ -13,11 +11,9 @@ export default function Home() {
       <Hero />
       <ExploreGrid />
       <BeadedDivider />
-      <PurposeSplit />
-      <FeaturedBusinesses />
-      <UpcomingEvents />
+      <EventCountdown />
+      <PurposeSplit />      
       <BeadedDivider />
-      <FeaturedStories />
       <PartnerCta />
     </main>
   );
